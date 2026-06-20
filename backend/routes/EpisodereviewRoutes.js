@@ -4,7 +4,7 @@ import {
   createEpisodeReview,
   updateEpisodeReview,
   deleteEpisodeReview
-} from "../controllers/episodeReviewController.js";
+} from "../controllers/EpisodereviewController.js";
 import { verifyToken } from "../middleware/verifyToken.js";
 
 const router = express.Router();
