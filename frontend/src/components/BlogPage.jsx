@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { PenSquare, Heart, MessageCircle, Calendar, User } from "lucide-react";
 import "./BlogPage.css";
 
-
+// build
 const BlogPage = () => {
   const navigate = useNavigate();
   const [blogs, setBlogs] = useState([]);
