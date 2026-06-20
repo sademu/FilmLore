@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { PenSquare, Heart, MessageCircle, Calendar, User } from "lucide-react";
 import "./BlogPage.css";
 
+
 const BlogPage = () => {
   const navigate = useNavigate();
   const [blogs, setBlogs] = useState([]);
@@ -14,7 +15,7 @@ const BlogPage = () => {
 
   const fetchBlogs = async () => {
     try {
-      const res = await fetch("http://localhost:5004/api/blogs");
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/blogs`);
       const json = await res.json();
 
       if (json.success) {
