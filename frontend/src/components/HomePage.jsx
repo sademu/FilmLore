@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Search, Home, Film, TrendingUp, Star, Play, List } from "lucide-react";
 import "./HomePage.css";
-
+// rebuild
 const HomePage = () => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
