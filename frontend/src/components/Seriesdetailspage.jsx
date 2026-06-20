@@ -14,7 +14,7 @@ import {
   Edit2,
   Trash2,
 } from "lucide-react";
-import "./SeriesDetailsPage.css";
+import "./Seriesdetailspage.css";
 
 const SeriesDetailsPage = () => {
   const { seriesId } = useParams();
