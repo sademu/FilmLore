@@ -21,7 +21,7 @@ const WatchlistPage = () => {
       }
 
       const res = await fetch(
-        `${process.env.REACT_APP_API_URL}/api/watchlists`,
+        `${import.meta.env.VITE_API_URL}/api/watchlists`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

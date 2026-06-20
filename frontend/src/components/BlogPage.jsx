@@ -15,7 +15,7 @@ const BlogPage = () => {
 
   const fetchBlogs = async () => {
     try {
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/blogs`);
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/blogs`);
       const json = await res.json();
 
       if (json.success) {

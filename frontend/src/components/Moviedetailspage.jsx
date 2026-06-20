@@ -39,7 +39,7 @@ const MovieDetailsPage = () => {
     const fetchMovieDetails = async () => {
       try {
         const res = await fetch(
-          `${process.env.REACT_APP_API_URL}/api/movies/${movieId}`,
+          `${import.meta.env.VITE_API_URL}/api/movies/${movieId}`,
         );
         const json = await res.json();
         console.log("Movie details response:", json);
@@ -56,7 +56,7 @@ const MovieDetailsPage = () => {
     const fetchReviews = async () => {
       try {
         const res = await fetch(
-          `${process.env.REACT_APP_API_URL}/api/movies/${movieId}/reviews`,
+          `${import.meta.env.VITE_API_URL}/api/movies/${movieId}/reviews`,
         );
         const json = await res.json();
 
@@ -83,7 +83,7 @@ const MovieDetailsPage = () => {
       const user = JSON.parse(localStorage.getItem("user"));
 
       const res = await fetch(
-        `${process.env.REACT_APP_API_URL}/api/movies/${movieId}/reviews`,
+        `${import.meta.env.VITE_API_URL}/api/movies/${movieId}/reviews`,
         {
           method: "POST",
           headers: {
@@ -274,7 +274,7 @@ const MovieDetailsPage = () => {
 
     try {
       const res = await fetch(
-        "${process.env.REACT_APP_API_URL}/api/watchlist/add",
+        "${import.meta.env.VITE_API_URL}/api/watchlist/add",
         {
           method: "POST",
           headers: {
