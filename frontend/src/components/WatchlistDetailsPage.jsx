@@ -33,7 +33,7 @@ const WatchlistDetailsPage = () => {
       }
 
       const res = await fetch(
-        `http://localhost:5004/api/watchlist/${encodeURIComponent(watchlistName)}`,
+        `${process.env.REACT_APP_API_URL}/api/watchlist/${encodeURIComponent(watchlistName)}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -62,7 +62,7 @@ const WatchlistDetailsPage = () => {
       const token = localStorage.getItem("token");
 
       const res = await fetch(
-        `http://localhost:5004/api/watchlist/item/${watchlistId}`,
+        `${process.env.REACT_APP_API_URL}/api/watchlist/item/${watchlistId}`,
         {
           method: "DELETE",
           headers: {
@@ -89,7 +89,7 @@ const WatchlistDetailsPage = () => {
       const token = localStorage.getItem("token");
 
       const res = await fetch(
-        `http://localhost:5004/api/watchlist/toggle/${watchlistId}`,
+        `${process.env.REACT_APP_API_URL}/api/watchlist/toggle/${watchlistId}`,
         {
           method: "PATCH",
           headers: {

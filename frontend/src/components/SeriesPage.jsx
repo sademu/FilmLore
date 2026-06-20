@@ -38,7 +38,7 @@ const SeriesPage = () => {
   useEffect(() => {
     const fetchSeries = async () => {
       try {
-        const res = await fetch('http://localhost:5004/api/series');
+        const res = await fetch("${process.env.REACT_APP_API_URL}/api/series");
         const json = await res.json();
         
         if (json.success) {

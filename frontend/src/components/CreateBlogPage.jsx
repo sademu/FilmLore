@@ -65,8 +65,8 @@ const CreateBlogPage = () => {
     try {
       const token = localStorage.getItem("token");
       const url = isEditMode
-        ? `http://localhost:5004/api/blog/${blogId}`
-        : "http://localhost:5004/api/blog";
+        ? `${process.env.REACT_APP_API_URL}/api/blog/${blogId}`
+        : `${process.env.REACT_APP_API_URL}/api/blog`;
 
       const method = isEditMode ? "PUT" : "POST";
 

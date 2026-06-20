@@ -44,9 +44,10 @@ const LoginPage = () => {
     if (activeTab === 'login') {
       // Handle login
       try {
-        const endpoint = loginType === 'admin' 
-          ? 'http://localhost:5004/api/auth/admin/login'
-          : 'http://localhost:5004/api/auth/login';
+        const endpoint =
+          loginType === "admin"
+            ? `${process.env.REACT_APP_API_URL}/api/auth/admin/login`
+            : `${process.env.REACT_APP_API_URL}/api/auth/login`;
 
         const response = await fetch(endpoint, {
           method: 'POST',
@@ -88,20 +89,23 @@ const LoginPage = () => {
       }
 
       try {
-        const response = await fetch('http://localhost:5004/api/auth/register', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}/api/auth/register`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              fullName: formData.fullName,
+              username: formData.username,
+              email: formData.email,
+              password: formData.password,
+              dateOfBirth: formData.dateOfBirth,
+              profileImage: profileImage, // Base64 image
+            }),
           },
-          body: JSON.stringify({
-            fullName: formData.fullName,
-            username: formData.username,
-            email: formData.email,
-            password: formData.password,
-            dateOfBirth: formData.dateOfBirth,
-            profileImage: profileImage, // Base64 image
-          }),
-        });
+        );
 
         const data = await response.json();
 

@@ -68,7 +68,7 @@ const MoviesPage = () => {
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const res = await fetch("http://localhost:5004/api/movies");
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/api/movies`);
         const json = await res.json();
         if (json.success) {
           const moviesData = json.data.map((m) => ({

@@ -14,7 +14,7 @@ const HomePage = () => {
   useEffect(() => {
     const fetchFeaturedMovies = async () => {
       try {
-        const res = await fetch("http://localhost:5004/api/movies");
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/api/movies`);
         const json = await res.json();
 
         if (json.success) {
@@ -42,7 +42,9 @@ const HomePage = () => {
   useEffect(() => {
     const fetchTopRatedMovies = async () => {
       try {
-        const res = await fetch("http://localhost:5004/api/moviesTopRated");
+        const res = await fetch(
+          `${process.env.REACT_APP_API_URL}/api/moviesTopRated`,
+        );
         const json = await res.json();
         if (json.success) {
           setTopRatedMovies(

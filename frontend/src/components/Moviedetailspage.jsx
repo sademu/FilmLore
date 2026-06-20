@@ -38,7 +38,9 @@ const MovieDetailsPage = () => {
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
-        const res = await fetch(`http://localhost:5004/api/movies/${movieId}`);
+        const res = await fetch(
+          `${process.env.REACT_APP_API_URL}/api/movies/${movieId}`,
+        );
         const json = await res.json();
         console.log("Movie details response:", json);
         if (json.success) {
@@ -54,7 +56,7 @@ const MovieDetailsPage = () => {
     const fetchReviews = async () => {
       try {
         const res = await fetch(
-          `http://localhost:5004/api/movies/${movieId}/reviews`,
+          `${process.env.REACT_APP_API_URL}/api/movies/${movieId}/reviews`,
         );
         const json = await res.json();
 
@@ -81,7 +83,7 @@ const MovieDetailsPage = () => {
       const user = JSON.parse(localStorage.getItem("user"));
 
       const res = await fetch(
-        `http://localhost:5004/api/movies/${movieId}/reviews`,
+        `${process.env.REACT_APP_API_URL}/api/movies/${movieId}/reviews`,
         {
           method: "POST",
           headers: {
@@ -142,17 +144,20 @@ const MovieDetailsPage = () => {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await fetch(`http://localhost:5004/api/reviews/${reviewId}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+      const res = await fetch(
+        `${process.env.REACT_APP_API_URL}/api/reviews/${reviewId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            rating: editRating,
+            text: editText,
+          }),
         },
-        body: JSON.stringify({
-          rating: editRating,
-          text: editText,
-        }),
-      });
+      );
 
       const json = await res.json();
 
@@ -191,12 +196,15 @@ const MovieDetailsPage = () => {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await fetch(`http://localhost:5004/api/reviews/${reviewId}`, {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
+      const res = await fetch(
+        `${process.env.REACT_APP_API_URL}/api/reviews/${reviewId}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         },
-      });
+      );
 
       const json = await res.json();
 
@@ -232,9 +240,12 @@ const MovieDetailsPage = () => {
         return;
       }
 
-      const res = await fetch("http://localhost:5004/api/watchlists", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await fetch(
+        "${process.env.REACT_APP_API_URL}/api/watchlists",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        },
+      );
       const json = await res.json();
       if (json.success) {
         setUserWatchlists(json.data);
@@ -262,17 +273,20 @@ const MovieDetailsPage = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:5004/api/watchlist/add", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+      const res = await fetch(
+        "${process.env.REACT_APP_API_URL}/api/watchlist/add",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            mediaid: movieId,
+            title: watchlistTitle,
+          }),
         },
-        body: JSON.stringify({
-          mediaid: movieId,
-          title: watchlistTitle,
-        }),
-      });
+      );
 
       const json = await res.json();
 

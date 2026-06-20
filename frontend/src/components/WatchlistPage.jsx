@@ -20,11 +20,14 @@ const WatchlistPage = () => {
         return;
       }
 
-      const res = await fetch("http://localhost:5004/api/watchlists", {
-        headers: {
-          Authorization: `Bearer ${token}`,
+      const res = await fetch(
+        `${process.env.REACT_APP_API_URL}/api/watchlists`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         },
-      });
+      );
 
       const json = await res.json();
 
