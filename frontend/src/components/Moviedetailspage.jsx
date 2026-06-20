@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft, Play, Bookmark, Share2, Star, Award } from "lucide-react";
-import "./MovieDetailsPage.css";
+import "./Moviedetailspage.css";
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
